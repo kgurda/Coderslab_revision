@@ -1,0 +1,10 @@
+{% extends "CodersLabBundle:Views:base.html.twig" %}
+
+{% block title %} repeat sentence {% endblock %}
+{% block controller %} Views {% endblock %}
+{% block main %}
+    {% for i in 1..n %}
+        <h1>{{sentence|default('Symfony jest fajnie')}}</h1>
+    {% endfor %}
+{% endblock %}
+   

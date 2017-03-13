@@ -1,0 +1,10 @@
+{% extends "CodersLabBundle:Views:base.html.twig" %}
+
+{% block title %} create Random {% endblock %}
+{% block controller %} Views {% endblock %}
+{% block main %}
+    {% for i in array %}
+        <h1>{{i}}</h1>
+    {% endfor %}
+{% endblock %}
+   

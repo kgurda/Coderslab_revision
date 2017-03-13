@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %} title {% endblock %}</title>
+    </head>
+    <body>
+        <div>
+            <a href="{{ path("coderslab_views_createrandom", {'start':4, 'end':9, 'n':4}) }}">Create Randoms</a>
+            <a href="{{ path("coderslab_views_repeatsentence", {'n':4, 'sentence':'To jest zdanie'}) }}">Repeat Sentence</a>
+        </div>
+        <h1>{% block controller %}sss  {% endblock %}</h1>
+        <div>{% block main %} zzz {% endblock %}</div>
+    </body>
+</html>
