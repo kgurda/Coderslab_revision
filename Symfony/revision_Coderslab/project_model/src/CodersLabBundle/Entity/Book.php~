@@ -3,7 +3,7 @@
 namespace CodersLabBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use \CodersLabBundle\Entity\Author;
+use CodersLabBundle\Entity\Author;
 
 /**
  * Book
@@ -125,28 +125,5 @@ class Book
     public function getRating()
     {
         return $this->rating;
-    }
-
-    /**
-     * Set author
-     *
-     * @param \CodersLabBundle\Entity\Author $author
-     * @return Book
-     */
-    public function setAuthor(\CodersLabBundle\Entity\Author $author = null)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return \CodersLabBundle\Entity\Author 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 }

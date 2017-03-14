@@ -3,7 +3,6 @@
 namespace CodersLabBundle\Controller;
 
 use CodersLabBundle\Entity\Author;
-use CodersLabBundle\Entity\Book;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,9 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/book")
+ * @Route("/author")
  */
-class BookController extends Controller
+class AuthorController extends Controller
 {
     /**
      * @Route("/new")
@@ -21,10 +20,7 @@ class BookController extends Controller
      */
     public function newAction()
     {
-       $repo = $this->getDoctrine()->getRepository('CodersLabBundle:Author');
-       $authors = $repo->findAll();
-        
-       return array('authors'=>$authors);
+       
     }
     
     /**
@@ -32,23 +28,18 @@ class BookController extends Controller
      */
     public function createAction(Request $request) 
     {
-        $title = $request->request->get('title');
+        $name = $request->request->get('name');
         $description = $request->request->get('description');
-        $rating = $request->request->get('rating');
-        $authorId=$request->request->get('author_id');
-        $author = $this->getDoctrine()->getRepository('CodersLabBundle:Author')->find($authorId);
         
-        $book = new Book();
-        $book->setTitle($title);
-        $book->setDescription($description);
-        $book->setRating($rating);
-        $book->setAuthor($author);
+        $author = new Author();
+        $author->setName($name);
+        $author->setDescription($description);
         
         $em = $this->getDoctrine()->getManager();
-        $em->persist($book);
+        $em->persist($author);
         $em->flush();
         
-        return $this->redirectToRoute("coderslab_book_show", ['id' => $book->getId()]);
+        return $this->redirectToRoute("coderslab_author_show", ['id' => $author->getId()]);
     }
     
     /**
@@ -57,17 +48,13 @@ class BookController extends Controller
      */
     public function showAction($id)
     {
-        $repo = $this->getDoctrine()->getRepository('CodersLabBundle:Book');
-        $book = $repo->find($id);
-        $title = $book->getTitle();
-        $description = $book->getDescription();
-        $rating = $book->getRating();
-        $author = $book->getAuthor();
+        $repo = $this->getDoctrine()->getRepository('CodersLabBundle:Author');
+        $author = $repo->find($id);
+        $name = $author->getName();
+        $description = $author->getDescription();
         
-        return array('title' => $title,
-                        'description' =>$description,
-                        'rating'=>$rating,
-                        'author'=>$author);
+        return array('name' => $name,
+                        'description' =>$description);
     }
     
     /**
@@ -76,10 +63,10 @@ class BookController extends Controller
      */
     public function showAllAction()
     {
-        $repo = $this->getDoctrine()->getRepository('CodersLabBundle:Book');
-        $books = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository('CodersLabBundle:Author');
+        $author = $repo->findAll();
         
-        return array('books'=>$books);
+        return array('authors'=>$author);
     }
     
     /**

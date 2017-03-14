@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form action="/create" method="post">
+        <form action="/book/create" method="post">
             <label>Tytuł: 
                 <input name="title">
             </label>
@@ -9,6 +9,13 @@
             </label>
             <label>Rating: 
                 <input name="rating">
+            </label>
+            <label>Author: 
+                <select name="author_id">
+                {% for author in authors %}
+                    <option value="{{author.id}}" name="author_name">{{author.name}}</option>
+                {% endfor %}
+                </select>
             </label>
             <input type="submit">
         </form>
