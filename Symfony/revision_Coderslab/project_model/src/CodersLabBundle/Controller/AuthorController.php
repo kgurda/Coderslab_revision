@@ -53,8 +53,11 @@ class AuthorController extends Controller
         $name = $author->getName();
         $description = $author->getDescription();
         
+        $books = $this->getDoctrine()->getRepository('CodersLabBundle:Book')->findBy(array('author' => $id));
+        
         return array('name' => $name,
-                        'description' =>$description);
+                        'description' =>$description,
+                        'books' => $books);
     }
     
     /**

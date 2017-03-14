@@ -1,5 +1,6 @@
-<html>
-    <body>
+{% extends "CodersLabBundle::base.html.twig" %} 
+{% block main %}
+    <div class="input-group input-group-lg">
         <form action="/book/create" method="post">
             <label>Tytuł: 
                 <input name="title">
@@ -19,5 +20,5 @@
             </label>
             <input type="submit">
         </form>
-    </body>
-</html>
+    </div>
+{% endblock %}

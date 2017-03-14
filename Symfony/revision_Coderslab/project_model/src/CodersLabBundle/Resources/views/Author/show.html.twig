@@ -1,2 +1,9 @@
 <h2>Name: {{ name }}</h2>
 <h2>Desciption: {{ description }}</h2>
+<h2>Books: 
+    <ul>
+        {% for book in books %}
+            <li><a href="{{ path('coderslab_book_show', {'id':book.id}) }}">{{ book.title}}</a></li>
+        {% endfor %} 
+    </ul>
+</h2>

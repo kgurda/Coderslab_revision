@@ -1,4 +1,4 @@
 <h2>Title: {{ title }}</h2>
 <h2>Desciption: {{ description }}</h2>
 <h2>Rating: {{ rating }}</h2>
-<h2>Author: {{author.name }} </h2>
+<h2>Author: <a href="{{path('coderslab_author_show', {'id':author.id})}}" >{{author.name }}</a> </h2>
